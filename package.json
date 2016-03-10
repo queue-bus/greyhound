@@ -1,7 +1,7 @@
 {
   "author": "Evan Tahler <evantahler@gmail.com>",
   "name": "greyhound",
-  "description": "",
+  "description": "Moving events from one bus to another. A bi-directional event transfer tool",
   "version": "0.0.1",
   "homepage": "https://github.com/queue-bus/greyhound",
   "repository": {
