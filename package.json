@@ -1,0 +1,41 @@
+{
+  "author": "Evan Tahler <evantahler@gmail.com>",
+  "name": "greyhound",
+  "description": "",
+  "version": "0.0.1",
+  "homepage": "https://github.com/queue-bus/greyhound",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/queue-bus/greyhound.git"
+  },
+  "main": "index.js",
+  "keywords": [
+    "delayed",
+    "queue",
+    "resque",
+    "redis",
+    "bus",
+    "pub",
+    "sub",
+    "distribution",
+    "queue-bus",
+    "resque-bus"
+  ],
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "dependencies": {
+    "async": "^1.5.2",
+    "ioredis": "^1.9.0",
+    "node-queue-bus": "^0.2.0",
+    "winston": "^2.2.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "should": "^8.2.2"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha"
+  }
+}
