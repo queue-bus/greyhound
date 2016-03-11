@@ -46,7 +46,13 @@ Greyhound.prototype.jobs = function(){
           if(bus.name !== self.name && !payload.__originating_bus){
             jobJobs.push(function(done){
               payload.__originating_bus = self.name;
-              bus.publish(payload.bus_event_type, payload, done);
+              bus.publish(payload.bus_event_type, payload, function(error){
+                if(error && bus.connection.options.ignoreErrors !== true){
+                  return done(error);
+                }else{
+                  return done();
+                }
+              });
             });
           }
         });
