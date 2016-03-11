@@ -5,14 +5,11 @@ var nodeQueueBus = require('node-queue-bus');
 var winston = require('winston');
 var mkdirp = require('mkdirp');
 
-var Greyhound = function(){
+var Greyhound = function(config){
   this.appKey = 'greyhound';
   this.buses = [];
   this.workers = [];
-  this.config = {
-    buses: require(__dirname + '/config/buses.js').buses,
-    logger: require(__dirname + '/config/logger.js').logger,
-  };
+  this.config = config;
 
   var transports = [];
 
@@ -94,7 +91,8 @@ Greyhound.prototype.start = function(callback){
         connection: c,
         queues: [c.workQueueName],
         name: c.name,
-        toDrive: (process.env.DRIVER === 'true')
+        timeout: c.timeout,
+        toDrive: c.toDrive
       }, self.jobs());
 
       worker.on('start',           function(){ self.logger.debug(worker.name + ': worker started'); });
@@ -151,7 +149,12 @@ Greyhound.prototype.stop = function(callback){
 //*** Running Standalone ***//
 
 if(require.main === module){
-  var G = new Greyhound();
+  var config = {
+    buses: require(__dirname + '/config/buses.js').buses,
+    logger: require(__dirname + '/config/logger.js').logger,
+  };
+
+  var G = new Greyhound(config);
   G.start();
 
   process.on('SIGINT',  function(){ G.stop(process.exit) });

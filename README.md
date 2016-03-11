@@ -10,8 +10,5 @@ This tool connects to `N` separate bus systems, and subscribes to `/.*/`, gettin
 
 ## Notes:
 - parallelism (multi-worker) doesn't actually make sense here... Redis is single threaded, and the job won't be CPU bound.  To that end, we are not using node-resque's `MultiWorker`... but maybe that's wrong
-- the 'ignoreErrors' flag will not place jobs in the originating bus' error queue if Greyhound cannot reach the destination buses. Use this when you are worried about your source bus getting filled up with data that isn't that important. 
-
-## TODO
-- ENV-specific configs
-- tests
+- the 'ignoreErrors' flag will not place jobs in the originating bus' error queue if Greyhound cannot reach the destination buses. Use this when you are worried about your source bus getting filled up with data that isn't that important.
+- Greyhound can run as a bus `driver` with `DRIVER=true npm start`.  Don't do this in production.

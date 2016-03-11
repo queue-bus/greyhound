@@ -7,6 +7,8 @@ exports.buses = [
     database: 0,
     workQueueName: 'greyhound_default',
     ignoreErrors: true,
+    timeout: 5000,
+    toDrive: (process.env.DRIVER === 'true'),
     options: {
       password: null
     }
@@ -19,6 +21,8 @@ exports.buses = [
     database: 1,
     workQueueName: 'greyhound_default',
     ignoreErrors: false,
+    timeout: 5000,
+    toDrive: (process.env.DRIVER === 'true'),
     options: {
       password: null
     }
