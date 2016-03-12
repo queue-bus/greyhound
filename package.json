@@ -27,6 +27,7 @@
   "dependencies": {
     "async": "^1.5.2",
     "ioredis": "^1.9.0",
+    "mkdirp": "^0.5.1",
     "node-queue-bus": "^0.2.0",
     "winston": "^2.2.0"
   },
